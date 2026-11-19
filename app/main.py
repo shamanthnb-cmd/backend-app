@@ -89,12 +89,10 @@ def get_users():
     try:
         with get_connection() as conn:
             with conn.cursor() as cursor:
-                cursor.execute(
-                    "SELECT id, name, email FROM users ORDER BY id"
-                )
+                cursor.execute("SELECT id, name, email FROM users ORDER BY id" )
                 users = cursor.fetchall()
 
-        return [{"id": row[0], "name": row[1], "email": row[2]}for row in users] 
+        return [{"id": row[0], "name": row[1], "email": row[2]} for row in users] 
 
     except Exception as error:
         raise HTTPException(status_code=500, detail=str(error))
