@@ -94,10 +94,7 @@ def get_users():
                 )
                 users = cursor.fetchall()
 
-        return [
-            {"id": row[0], "name": row[1], "email": row[2]}
-            for row in users
-        ]
+        return [{"id": row[0], "name": row[1], "email": row[2]}for row in users] 
 
     except Exception as error:
         raise HTTPException(status_code=500, detail=str(error))
